@@ -5,9 +5,11 @@
 
 int main()
 {
+	// Couts inicials
 	std::cout << "Implementeu en aquesta solucio la solucio per les Tasques 1 i 2" << std::endl;
 	std::cout << "===============================================================" << std::endl;
 
+	// XML viejo roble
 	XmlElement viejoRoble = {
 		// id_element =
 		"node",
@@ -35,9 +37,11 @@ int main()
 			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("tag", {std::make_pair("k", "wheelchair"),
 																								  std::make_pair("v", "yes")})}};
 
+	
+	
 	std::string tempsValor = "";
 	bool permetMobilitatReduida = false;
-	// Comprovem per id_element, que es tracta d�un node
+	// Comprovem per id_element, que es tracta d'un node
 	if (viejoRoble.id_element == "node")
 	{
 		// En cas que sigui un node, recorrem els seus atributs
@@ -49,7 +53,8 @@ int main()
 				tempsValor = viejoRoble.atributs[i].second;
 			}
 		}
-		// Recorrem els fills d�aquest node
+		
+		// Recorrem els fills d'aquest node
 		for (int i = 0; i < viejoRoble.fills.size(); i++)
 		{
 			// Iterem i avaluem tots els fills que son tags
@@ -68,7 +73,21 @@ int main()
 		}
 	}
 
-	std::cout << "Id viejoRoble: " << viejoRoble.id_element << std::endl;
+	std::cout << "Viejo Roble: " << viejoRoble.id_element << std::endl;
+	for(int i = 0; i < viejoRoble.atributs.size(); i++)
+	{
+		if(viejoRoble.atributs[i].first == "lat")
+			std::cout << "\tId lat: " << viejoRoble.atributs[i].second << std::endl;
+		else if(viejoRoble.atributs[i].first == "lon")
+			std::cout << "\tId lon: " << viejoRoble.atributs[i].second << std::endl;
+	}
+	for(int i = 0; i < viejoRoble.atributs.size(); i++)
+	{
+		if(viejoRoble.fills[i].first == "name")
+			std::cout << "\tId lat: " << viejoRoble.atributs[i].second << std::endl;
+
+	}
+	
 
 	/*
 		Tasca 1:
