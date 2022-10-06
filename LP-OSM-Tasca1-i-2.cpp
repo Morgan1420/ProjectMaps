@@ -5,14 +5,14 @@
 
 int main()
 {
-    std::cout << "Implementeu en aquesta solucio la solucio per les Tasques 1 i 2" << std::endl;
-    std::cout << "===============================================================" << std::endl;
+	std::cout << "Implementeu en aquesta solucio la solucio per les Tasques 1 i 2" << std::endl;
+	std::cout << "===============================================================" << std::endl;
 
 	XmlElement viejoRoble = {
-		//id_element = 
-			"node",
+		// id_element =
+		"node",
 
-		// atributs = 
+		// atributs =
 		{
 			std::make_pair("id", "357101444"),
 			std::make_pair("visible", "true"),
@@ -22,55 +22,45 @@ int main()
 			std::make_pair("user", "MultiDavid2001b"),
 			std::make_pair("uid", "4946691"),
 			std::make_pair("lat", "41.4902204"),
-			std::make_pair("lon", "2.1406477")
-		},
+			std::make_pair("lon", "2.1406477")},
 
-		// fills = 
+		// fills =
 		{
-			std::make_pair<std::string,std::vector<std::pair<std::string, std::string>>>
-				("tag", {
-					std::make_pair<std::string, std::string>("k", "amenity"),
-					std::make_pair<std::string, std::string>("v", "restaurant")
-			}),
-			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>
-					("tag", {
-						std::make_pair<std::string, std::string>("k","cuisine"),
-						std::make_pair<std::string, std::string>("v", "regional")
-			}),
-			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>
-					("tag", {
-						std::make_pair<std::string, std::string>("k", "name"),
-						std::make_pair<std::string, std::string>("v", "El Roble")
-					}),
-			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>
-					("tag", {
-						std::make_pair("k","wheelchair"),
-						std::make_pair("v", "yes")
-					})
-		}
-	};
-
+			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("tag", {std::make_pair<std::string, std::string>("k", "amenity"),
+																								  std::make_pair<std::string, std::string>("v", "restaurant")}),
+			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("tag", {std::make_pair<std::string, std::string>("k", "cuisine"),
+																								  std::make_pair<std::string, std::string>("v", "regional")}),
+			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("tag", {std::make_pair<std::string, std::string>("k", "name"),
+																								  std::make_pair<std::string, std::string>("v", "El Roble")}),
+			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("tag", {std::make_pair("k", "wheelchair"),
+																								  std::make_pair("v", "yes")})}};
 
 	std::string tempsValor = "";
 	bool permetMobilitatReduida = false;
 	// Comprovem per id_element, que es tracta d�un node
-	if (viejoRoble.id_element == "node") {
+	if (viejoRoble.id_element == "node")
+	{
 		// En cas que sigui un node, recorrem els seus atributs
-		for (int i = 0; i < viejoRoble.atributs.size(); i++) {
+		for (int i = 0; i < viejoRoble.atributs.size(); i++)
+		{
 			// Iterem fins trobar el atribut que ens interessa
-			if (viejoRoble.atributs[i].first == "timestamp") {
+			if (viejoRoble.atributs[i].first == "timestamp")
+			{
 				tempsValor = viejoRoble.atributs[i].second;
 			}
 		}
 		// Recorrem els fills d�aquest node
-		for (int i = 0; i < viejoRoble.fills.size(); i++) {
+		for (int i = 0; i < viejoRoble.fills.size(); i++)
+		{
 			// Iterem i avaluem tots els fills que son tags
-			if (viejoRoble.fills[i].first == "tag") {
+			if (viejoRoble.fills[i].first == "tag")
+			{
 				// Emmagatzemem el valor d�aquest tag
 				std::pair<std::string, std::string> valorTag =
 					Util::kvDeTag(viejoRoble.fills[i].second);
 				// Comprovem que es el tag que busquem
-				if (valorTag.first == "wheelchair") {
+				if (valorTag.first == "wheelchair")
+				{
 					permetMobilitatReduida =
 						(valorTag.second == "yes") ? true : false;
 				}
@@ -78,25 +68,26 @@ int main()
 		}
 	}
 
+	std::cout << "Id viejoRoble: " << viejoRoble.id_element << std::endl;
 
 	/*
 		Tasca 1:
-		Imprimir per pantalla l�identificador, latitud (lat), l�longitud (lon), 
+		Imprimir per pantalla l�identificador, latitud (lat), l�longitud (lon),
 		aix� com el nom (name), del element XML viejoRoble construit en aquest apartat 2.2.
-		
+
 		Teniu en compte que, almenys, haureu de transformar latitud i longitud a tipus double.
-		
-		Recordeu que en la soluci� de la pr�ctica haureu de recollir tots els punts d�inter�s, 
+
+		Recordeu que en la soluci� de la pr�ctica haureu de recollir tots els punts d�inter�s,
 		que per definici�, s�n nodes que no s�n nodes de cam� que tenen un atribut name.
 	*/
 
-	// TODO Tasca1 
+	// TODO Tasca1
 
 	XmlElement camiJoaquim = {
-		// id_element = 
+		// id_element =
 		"way",
 
-		// atributs = 
+		// atributs =
 		{
 			std::make_pair("id", "31889094"),
 			std::make_pair("visible", "true"),
@@ -104,75 +95,44 @@ int main()
 			std::make_pair("changeset", "1002251634"),
 			std::make_pair("timestamp", "2021-04-03T21:17:17Z"),
 			std::make_pair("user", "Interswd"),
-			std::make_pair("uid", "3414856")
-		},
+			std::make_pair("uid", "3414856")},
 
-		// fills = 
+		// fills =
 		{
-				std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>
-					("nd",	{
-								std::make_pair("ref", "357125056")
-							}),
+			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("nd", {std::make_pair("ref", "357125056")}),
 
-				std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>
-					("nd", 
-							{
-								std::make_pair("ref", "8591278795")
-							}),
+			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("nd",
+																						  {std::make_pair("ref", "8591278795")}),
 
-				std::make_pair< std::string, std::vector<std::pair<std::string, std::string>>>
-					("nd", 
-							{
-								std::make_pair("ref", "357124693")
-							}),
+			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("nd",
+																						  {std::make_pair("ref", "357124693")}),
 
-				std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>
-					("nd",	
-							{
-								std::make_pair("ref", "357125054")
-							}),
-				std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>
-					("tag", 
-							{
-								std::make_pair("k", "highway"),
-								std::make_pair("v", "living_street")
-							}),
-				std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>
-					("tag", 
-							{
-								std::make_pair("k", "name"),
-								std::make_pair("v", "Carrer de Sant Joaquim")
-							}),
-				std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>
-					("tag", 
-							{
-								std::make_pair("k", "oneway"),
-								std::make_pair("v", "yes")
-							}),
-				std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>
-					("tag", 
-							{
-								std::make_pair("k", "surface"),
-								std::make_pair("v", "paving_stones")
-							})
-		}
-	};
-
-
+			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("nd",
+																						  {std::make_pair("ref", "357125054")}),
+			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("tag",
+																						  {std::make_pair("k", "highway"),
+																						   std::make_pair("v", "living_street")}),
+			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("tag",
+																						  {std::make_pair("k", "name"),
+																						   std::make_pair("v", "Carrer de Sant Joaquim")}),
+			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("tag",
+																						  {std::make_pair("k", "oneway"),
+																						   std::make_pair("v", "yes")}),
+			std::make_pair<std::string, std::vector<std::pair<std::string, std::string>>>("tag",
+																						  {std::make_pair("k", "surface"),
+																						   std::make_pair("v", "paving_stones")})}};
 
 	/*
-		Tasca 2: 
-		Imprimir per pantalla els identificadors dels nodes 
-		que formen el XmlElement camiJoaquim, aix� com el valor del atribut highway. 
-		
-		Recordeu que en la soluci� de la pr�ctica nom�s haureu de tenir en compte 
-		tots els camins que tenen el tag highway (independentment del valor que pugui tenir), 
+		Tasca 2:
+		Imprimir per pantalla els identificadors dels nodes
+		que formen el XmlElement camiJoaquim, aix� com el valor del atribut highway.
+
+		Recordeu que en la soluci� de la pr�ctica nom�s haureu de tenir en compte
+		tots els camins que tenen el tag highway (independentment del valor que pugui tenir),
 		aix� com saber quins nodes de tipus cam�, formen cada cam�.
 	*/
 
-	// TODO Tasca2 
+	// TODO Tasca2
 
 	return 0;
-
 }
-
