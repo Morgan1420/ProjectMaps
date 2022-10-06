@@ -78,6 +78,7 @@ int main()
 		}
 	}
 
+	//cout << viejoRoble.id() << endl;
 
 	/*
 		Tasca 1:
